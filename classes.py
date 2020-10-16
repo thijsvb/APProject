@@ -27,20 +27,52 @@ class Ball:
 
     def accelerate(self, a):
         self.vel += a
+        if self.vel.magnitude() > self.r:
+            self.vel.scale_to_length(self.r)
 
     def bounce(self, walls):
-        # for wall in walls:
-        #     # bounce
-        return
+        for wall in walls:
+            x, y = self.pos.xy
+            left, top, right, bottom = wall.rect.topleft + wall.rect.bottomright
+            centerx, centery = wall.rect.center
+
+            if wall.orientation == "vertical":
+                # left wall
+                if y > top and y < bottom and x < centerx and x + self.r >= left:
+                    self.pos.x = left - self.r
+                    self.vel.x *= -1
+
+                # right wall
+                elif y > top and y < bottom and x > centerx and x - self.r <= right:
+                    self.pos.x = right + self.r
+                    self.vel.x *= -1
+
+            elif wall.orientation == "horizontal":
+                # top wall
+                if x > left and x < right and y < centery and y + self.r >= top:
+                    self.pos.y = top - self.r
+                    self.vel.y *= -1
+
+                # bottom wall
+                elif x > left and x < right and y > centery and y - self.r <= bottom:
+                    self.pos.y = bottom + self.r
+                    self.vel.y *= -1
 
 class Wall:
-    def __init__(self):
-        # make a wall
-        return
+    def __init__(self, surface, x, y, orientation, length, thick=10, color=(255, 100, 0)):
+        if orientation == "vertical":
+            width = thick
+            height = length
+        elif orientation == "horizontal":
+            width = length
+            height = thick
+        self.rect = Rect(x, y, width, height)
+        self.orientation = orientation
+        self.color = color
+        self.screen = surface
 
-    def draw():
-        # draw the wall
-        return
+    def draw(self):
+        pygame.draw.rect(self.screen, self.color, self.rect)
 
 class Target:
     def __init__(self):
