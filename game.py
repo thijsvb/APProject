@@ -10,7 +10,6 @@ framerate = 60
 screenWidth, screenHeight = screen.get_size()
 b = Ball(screen, screenWidth/2, screenHeight/2)
 
-
 loop = True
 while loop:
     for event in pygame.event.get():
