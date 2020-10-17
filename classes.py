@@ -2,7 +2,6 @@ import pygame
 from pygame.locals import *
 
 
-
 class Ball:
     def __init__(self, surface, x, y, r = 10, color = (255, 255, 255)):
         self.pos = pygame.math.Vector2(x, y)
@@ -16,7 +15,7 @@ class Ball:
         if self.vel.magnitude() < 0.1:
             self.vel.xy = (0, 0)
         else:
-            fricVec = self.vel.normalize() * -self.friction
+            fricVec = self.vel.normalize() * - self.friction
             self.vel += fricVec
             self.pos += self.vel
 
@@ -29,7 +28,7 @@ class Ball:
         self.vel += a
         if self.vel.magnitude() > self.r:
             self.vel.scale_to_length(self.r)
-
+        
     def bounce(self, walls):
         for wall in walls:
             x, y = self.pos.xy
@@ -73,16 +72,22 @@ class Wall:
 
     def draw(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
-
-class Target:
-    def __init__(self):
-        # make the target
-        return
-
+        
+class Goal:
+    def __init__(self, surface, x, y, r = 10, color = (0,0,0)):
+        self.pos = pygame.math.Vector2(x,y)
+        self.r = r
+        self.color = color
+        self.screen = surface
+    
     def draw(self):
-        #draw the target
+        x = int(self.pos.x)
+        y = int(self.pos.y)
+        pygame.draw.circle(self.screen, self.color, (x,y), self.r)
+        
+    def hit(self,ball):
+        #has to return True if the ball is touching the target
+        #Roy: But now, I tried to do it in an if-statement in the game code
+        #Roy: However, this doesn't work very well
         return
-
-    def hit(self, ball):
-        #return True if the ball is touching the target
-        return
+        
