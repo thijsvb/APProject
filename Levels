@@ -28,12 +28,14 @@ class Level_01(Level):
         self.background = pygame.image.load("PUT BACKGROUND IMAGE HERE").convert()
         self.background.set_colorkey(PUT COLOR HERE)
         
+
         walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
                  Wall(screen, 0, 0, "vertical", screenHeight),
                  Wall(screen, screenWidth-10, 0, "vertical", screenHeight),
                  Wall(screen, 0, screenHeight-10, "horizontal", screenWidth),
                  Wall(screen, 200, 200, "horizontal", 200),
                  Wall(screen, 500, 200, "vertical", 300)] 
+
         
         # Go through the array above and add platforms
         for wall in walls:
@@ -54,11 +56,13 @@ class Level_02(Level):
         self.background = pygame.image.load("PUT BACKGROUND IMAGE HERE").convert()
         self.background.set_colorkey(PUT COLOR HERE)
         
+
         walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
                  Wall(screen, 0, 0, "vertical", screenHeight),
                  Wall(screen, screenWidth-10, 0, "vertical", screenHeight),
                  Wall(screen, 0, screenHeight-10, "horizontal", screenWidth)]
                 #Only has surrounding walls now
+
         
         # Go through the array above and add platforms
         for wall in walls:
