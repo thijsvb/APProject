@@ -41,30 +41,40 @@ class Ball:
             self.vel.scale_to_length(self.r)
 
     def bounce(self, walls):
+        # this function takes a list of walls makes the ball object bounce off them if they collide
         for wall in walls:
-            x, y = self.pos.xy
-            left, top, right, bottom = wall.rect.topleft + wall.rect.bottomright
-            centerx, centery = wall.rect.center
+            # I put these variables in here so they're a bit easier to type and the code is a bit more readable
+            x, y = self.pos.xy # x and y of the ball
+            left, top, right, bottom = wall.rect.topleft + wall.rect.bottomright # the edges of the wall; left and right are x coördinates, top and bottom are y coördinates
+            centerx, centery = wall.rect.center # center x and y of the wall
 
+            # I only make the ball bounce in one dimention (x for vertical walls and y for horizontal walls)
+            # This isn't a very clean solution as it makes bouncing of the short side of a wall impossible, but it sure makes it a lot easier
             if wall.orientation == "vertical":
-                # left wall
-                if y > top and y < bottom and x < centerx and x + self.r >= left:
+            # Do a check for each side of the wall
+                # left side
+                # The ball has to be within the top and bottom of the wall, otherwise it's above or below the wall and will roll past it
+                # The ball also has to be on the left side of the wall
+                # Then the ball also has to be touching the left side
+                if y + self.r > top and y - self.r < bottom and x < centerx and x + self.r >= left:
+                    # To bounce first move the ball so it's just barely touching the wall, this prevents double bounces
                     self.pos.x = left - self.r
+                    # Then just invert the velocity in the x direction to bounce horizontally
                     self.vel.x *= -1
 
-                # right wall
-                elif y > top and y < bottom and x > centerx and x - self.r <= right:
+                # right side
+                elif y + self.r > top and y - self.r < bottom and x > centerx and x - self.r <= right:
                     self.pos.x = right + self.r
                     self.vel.x *= -1
 
             elif wall.orientation == "horizontal":
-                # top wall
-                if x > left and x < right and y < centery and y + self.r >= top:
+                # top side
+                if x + self.r > left and x - self.r < right and y < centery and y + self.r >= top:
                     self.pos.y = top - self.r
                     self.vel.y *= -1
 
-                # bottom wall
-                elif x > left and x < right and y > centery and y - self.r <= bottom:
+                # bottom side
+                elif x + self.r > left and x - self.r < right and y > centery and y - self.r <= bottom:
                     self.pos.y = bottom + self.r
                     self.vel.y *= -1
 
