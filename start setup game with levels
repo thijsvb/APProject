@@ -1,0 +1,73 @@
+import pygame
+from pygame.locals import *
+from classes import Ball, Wall
+
+# Initialise screen
+
+def main():
+    
+    pygame.init()
+    screen = pygame.display.set_mode((800, 600))
+    pygame.display.set_caption('Test')
+    framerate = 60
+    screenWidth, screenHeight = screen.get_size()
+    b = Ball(screen, screenWidth/2, screenHeight/2) # Create the ball
+    
+    # Create all the levels
+    level_list = []
+    level_list.append(levels.Level_01(ball))
+    level_list.append(levels.Level_02(ball))
+    
+    # Set the current level
+    current_level_no = 0
+    current_level = level_list[current_level_no]
+ 
+    active_sprite_list = pygame.sprite.Group()
+    ball.level = current_level
+    active_sprite_list.add(ball)
+ 
+    #Loop until the user clicks the close button.
+    done = False
+ 
+    # Used to manage how fast the screen updates
+    clock = pygame.time.Clock()
+
+# -------- Main Program Loop -----------
+    while not done:
+        for event in pygame.event.get(): # User did something
+            if event.type == pygame.QUIT: # If user clicked close
+                done = True # Flag that we are done so we exit this loop
+
+            if event.type == MOUSEBUTTONDOWN:
+                mousePos = pygame.math.Vector2(event.pos)
+                acc = (mousePos - b.pos).normalize()
+                acc *= 3
+                b.accelerate(acc)
+            
+            # Update the player.
+        active_sprite_list.update()
+ 
+        # Update items in the level
+        current_level.update()
+        
+        # If the player hits the goal, go to the next level
+        #PUT IF-STATEMENT: if ball hits target:
+            player.rect.x = 120
+            if current_level_no < len(level_list)-1:
+                current_level_no += 1
+                current_level = level_list[current_level_no]
+                ball.level = current_level
+            
+            
+        #Not sure what to do with this in combination with the levels
+            screen.fill((0, 127, 50))
+            b.bounce(walls)
+            b.move()
+            b.draw()
+            
+            for wall in walls:
+                wall.draw()
+                pygame.display.update()
+                pygame.time.delay(int(1000/framerate))
+                
+    pygame.quit()
