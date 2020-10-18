@@ -19,9 +19,10 @@ walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
          Wall(screen, 200, 200, "horizontal", 200),
          Wall(screen, 500, 200, "vertical", 300)]
 
-
+# This is the game loop, as long as it's running the game is running
 loop = True
 while loop:
+    # This for loop checks the pygame events: things like user inputs get turned into those events
     for event in pygame.event.get():
         if event.type == QUIT:
             loop = False
@@ -33,7 +34,7 @@ while loop:
             distance = math.hypot(b.pos.x-g.pos.x,b.pos.y-g.pos.y)#Roy: I added this line so it updates the distance everytime we move the ball
         if distance <= (b.r+g.r): #Roy: This is the if-statement that checks for collision, e.g. if the ball hits the target
             g.color =  (0,0,255) #Roy: for now, I just told the code to change the color of the goal, we have to see what we want the program to do once the goal is hit
-            
+
 
     screen.fill((0, 127, 50))
     b.bounce(walls)
