@@ -1,7 +1,7 @@
 import pygame
 from pygame.locals import *
 import math
-
+import sys
 
 class Ball:
     def __init__(self, surface, x, y, r = 10, color = (255, 255, 255)):
@@ -123,8 +123,8 @@ class scoreSheet():
         self.screenHeight = screenHeight
         self.width = 250
         self.height = 510
-        self.font = pygame.font.Font('arial', 22)
-        self.bigFont = pygame.font.Font('arial', 30)
+        self.font = pygame.font.sysFont('arial', 22)
+        self.bigFont = pygame.font.sysFont('arial', 30)
 
     def getScore(self):
         return self.strokes
