@@ -123,8 +123,8 @@ class scoreSheet():
         self.screenHeight = screenHeight
         self.width = 250
         self.height = 510
-        self.font = pygame.font.sysFont('arial', 22)
-        self.bigFont = pygame.font.sysFont('arial', 30)
+        self.font = pygame.font.SysFont('arial', 22)
+        self.bigFont = pygame.font.SysFont('arial', 30)
 
     def getScore(self):
         return self.strokes
