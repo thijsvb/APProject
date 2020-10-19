@@ -114,3 +114,45 @@ class Goal:
             return True
         else:
             return False
+        
+class scoreSheet():
+    def __init__(self):
+        self.strokes = []
+        self.screenWidth = screenWidth
+        self.screenHeight = screenHeight
+        self.width = 250
+        self.height = 510
+        self.font = pygame.font.Font('arial', 22)
+        self.bigFont = pygame.font.Font('arial', 30)
+
+    def getScore(self):
+        return self.strokes
+
+    def drawSheet(self, score=0):
+        self.strokes.append(score)
+        grey = (220, 220, 220)
+
+        text = self.bigFont.render('Score: ' + str(sum(self.strokes)), 1, grey)
+        blit(text, (800, 330))
+
+        startx = self.screenWidth / 2 - self.width / 2
+        starty = self.screenHeight / 2 - self.height / 2
+        pygame.draw.rect(grey, (startx, starty, self.width, self.height))
+        for i in range(1,4):
+            pygame.draw.line((0,0,0), (startx + (i * (self.width/3)), starty), (startx + (i * (self.width/3)), starty + self.height), 2)
+        for i in range(1, 11):
+            if i == 1:
+                columnLevel = self.font.render('Level', 2, (0,0,0))
+                blit(columnLevel, (startx + 40, starty + 10))
+                columnScore = self.font.render('Score', 2, (0,0,0))
+                blit(columnScore, (startx + 295, starty + 10))
+            else:
+                blit = self.font.render(str(i - 1), 1, (128,128,128))
+                blit(blit, (startx + 56, starty + 10 + ((i - 1) * (self.height/10))), (0,0,0))
+                try:
+                    blit = self.font.render(str(self.strokes[i - 2]), 1, grey)
+                    blit(blit, ((startx + 60 + 266, starty + 10 + ((i - 1) * (self.height/10)))))
+                except:
+                    blit = self.font.render('-', 1, (128,128,128))
+                    blit(blit, (startx + 62 + 266, starty + 10 + ((i - 1) * (self.height/10))))
+            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/10))), (startx + self.width, starty + (i
