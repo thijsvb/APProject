@@ -155,4 +155,4 @@ class scoreSheet():
                 except:
                     blit = self.font.render('-', 1, (128,128,128))
                     blit(blit, (startx + 62 + 266, starty + 10 + ((i - 1) * (self.height/10))))
-            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/10))), (startx + self.width, starty + (i)))
+            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/10))), (startx + self.width, starty + (i * (self.height / 10))), 2)
