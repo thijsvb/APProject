@@ -1,7 +1,7 @@
 import math
 import pygame
 from pygame.locals import *
-from classes import Ball, Goal, Wall
+from classes import Ball, Goal, Wall, scoreSheet
 
 # Initialise screen
 pygame.init()
@@ -20,7 +20,7 @@ walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
          Wall(screen, 0, screenHeight-10, "horizontal", screenWidth),
          Wall(screen, 200, 200, "horizontal", 200),
          Wall(screen, 500, 200, "vertical", 300)]
-
+strokes = 1
 # This is the game loop, as long as it's running the game is running
 loop = True
 while loop:
@@ -35,6 +35,7 @@ while loop:
             acc = (mousePos - b.pos).normalize()
             acc *= 3
             b.accelerate(acc)
+            strokes += 1
 
     screen.fill((0, 127, 50)) # set a background on top of everything that was drawn last frame
 
@@ -48,7 +49,8 @@ while loop:
     for wall in walls:
         wall.draw()
     b.draw()
-
+    if g.hit(b):
+         sheet.drawSheet(strokes)
     # Update the screen and wait for the next frame (without the delay the game runs way too fast)
     pygame.display.update()
     pygame.time.delay(int(1000/framerate)) # The delay function takes a time in milliseconds, the framerate is in frames per second so the delay time t = 1000/ framerate
