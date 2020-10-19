@@ -116,7 +116,8 @@ class Goal:
             return False
 
 class scoreSheet():
-    def __init__(self):
+    def __init__(self, screen):
+        screenWidth, screenHeight = screen.get_size()
         self.strokes = []
         self.screenWidth = screenWidth
         self.screenHeight = screenHeight

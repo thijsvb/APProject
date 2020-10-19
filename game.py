@@ -21,6 +21,7 @@ walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
          Wall(screen, 200, 200, "horizontal", 200),
          Wall(screen, 500, 200, "vertical", 300)]
 strokes = 1
+sheet = scoreSheet(screen)
 
 # This is the game loop, as long as it's running the game is running
 loop = True
@@ -51,7 +52,7 @@ while loop:
         wall.draw()
     b.draw()
     if g.hit(b):
-         scoreSheet.drawSheet(strokes)
+         sheet.drawSheet(strokes)
     # Update the screen and wait for the next frame (without the delay the game runs way too fast)
     pygame.display.update()
     pygame.time.delay(int(1000/framerate)) # The delay function takes a time in milliseconds, the framerate is in frames per second so the delay time t = 1000/ framerate
