@@ -54,7 +54,6 @@ def main():
         #     wall.draw()
         # b.draw()
 
-<<<<<<< HEAD
         if current_level.finished:
              # sheet.drawSheet(strokes)
              current_level_no += 1
@@ -64,32 +63,6 @@ def main():
         pygame.display.update()
         pygame.time.delay(int(1000/framerate)) # The delay function takes a time in milliseconds, the framerate is in frames per second so the delay time t = 1000/ framerate
 
-=======
-        screen.fill((0, 127, 50)) # set a background on top of everything that was drawn last frame
-
-        # Update the physics
-        b.bounce(walls)
-        b.move()
-        g.hit(b)
-
-        # Draw all the objects
-        g.draw()
-        for wall in walls:
-            wall.draw()
-        b.draw()
-        if g.hit(b):
-            sheet.drawSheet(strokes)
-            current_level_no += 1
-            current_level = level_list[current_level_no]
-            b.level = current_level
-    
-        current_level.draw(screen)
-   
-        # Update the screen and wait for the next frame (without the delay the game runs way too fast)
-        pygame.display.update()
-        pygame.time.delay(int(1000/framerate)) # The delay function takes a time in milliseconds, the framerate is in frames per second so the delay time t = 1000/ framerate
-    
->>>>>>> 012dfdd870d32364692fa8b9d7f4dfe7716825e0
     # If we leave the game loop; quit
     pygame.quit()
 
