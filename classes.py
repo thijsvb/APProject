@@ -119,6 +119,7 @@ class scoreSheet():
     def __init__(self, screen):
         screenWidth, screenHeight = screen.get_size()
         self.strokes = []
+        self.screen = surface
         self.screenWidth = screenWidth
         self.screenHeight = screenHeight
         self.width = 250
@@ -134,7 +135,7 @@ class scoreSheet():
         grey = (220, 220, 220)
 
         text = self.bigFont.render('Score: ' + str(sum(self.strokes)), 1, grey)
-        blit(text, (800, 330))
+        self.screen.blit(text, (800, 330))
 
         startx = self.screenWidth / 2 - self.width / 2
         starty = self.screenHeight / 2 - self.height / 2
@@ -144,12 +145,12 @@ class scoreSheet():
         for i in range(1, 11):
             if i == 1:
                 columnLevel = self.font.render('Level', 2, (0,0,0))
-                blit(columnLevel, (startx + 40, starty + 10))
+                self.screen.blit(columnLevel, (startx + 40, starty + 10))
                 columnScore = self.font.render('Score', 2, (0,0,0))
-                blit(columnScore, (startx + 295, starty + 10))
+                self.screen.blit(columnScore, (startx + 295, starty + 10))
             else:
                 blit = self.font.render(str(i - 1), 1, (128,128,128))
-                blit(blit, (startx + 56, starty + 10 + ((i - 1) * (self.height/10))), (0,0,0))
+                self.screen.blit(blit, (startx + 56, starty + 10 + ((i - 1) * (self.height/10))), (0,0,0))
                 try:
                     blit = self.font.render(str(self.strokes[i - 2]), 1, grey)
                     blit(blit, ((startx + 60 + 266, starty + 10 + ((i - 1) * (self.height/10)))))
