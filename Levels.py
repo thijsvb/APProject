@@ -55,7 +55,6 @@ class Level_01(Level):
                  Wall(screen, 0, screenHeight-10, "horizontal", screenWidth),
                  Wall(screen, 0, screenHeight/3, "horizontal", screenWidth*2/3),
                  Wall(screen, screenWidth/3, screenHeight*2/3, "horizontal", screenWidth*2/3)]
-                 w = Wall(screen, x, y, "orientation", length)
 
 
 
