@@ -119,7 +119,7 @@ class scoreSheet():
     def __init__(self, screen):
         screenWidth, screenHeight = screen.get_size()
         self.strokes = []
-        self.screen = surface
+        self.screen = screen
         self.screenWidth = screenWidth
         self.screenHeight = screenHeight
         self.width = 250
