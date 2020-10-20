@@ -133,28 +133,35 @@ class scoreSheet():
     def drawSheet(self, score=0):
         self.strokes.append(score)
         grey = (220, 220, 220)
+        textCol = (100, 100, 100)
 
         text = self.bigFont.render('Score: ' + str(sum(self.strokes)), 1, grey)
         self.screen.blit(text, (800, 330))
 
         startx = self.screenWidth / 2 - self.width / 2
         starty = self.screenHeight / 2 - self.height / 2
-        pygame.draw.rect(grey, (startx, starty, self.width, self.height))
+        pygame.draw.rect(self.screen, grey, (startx, starty, self.width, self.height))
         for i in range(1, 3):
-            pygame.draw.line((0,0,0), (startx + (i * (self.width/2)), starty), (startx + (i * (self.width/2)), starty + self.height), 2)
-        for i in range(1, 3):
+            pygame.draw.line(self.screen, (0,0,0), (startx + (i * (self.width/2)), starty), (startx + (i * (self.width/2)), starty + self.height), 2)
+        Nlevels = 5
+        for i in range(1, Nlevels+2):
             if i == 1:
                 columnLevel = self.font.render('Level', 2, (0,0,0))
                 self.screen.blit(columnLevel, (startx + 40, starty + 3))
                 columnScore = self.font.render('Score', 2, (0,0,0))
-                self.screen.blit(columnScore, (startx + 295, starty + 3))
+                self.screen.blit(columnScore, (startx + 170, starty + 3))
             else:
-                blit = self.font.render(str(i - 1), 1, (128,128,128))
-                self.screen.blit(blit, (startx + 56, starty + 10 + ((i - 1) * (self.height/3))), (0,0,0))
+                blit = self.font.render(str(i - 1), 1, textCol)
+                self.screen.blit(blit, (startx + 56, starty + 10 + ((i - 1) * (self.height/(Nlevels+1)))))
                 try:
-                    blit = self.font.render(str(self.strokes[i - 2]), 1, grey)
-                    blit(blit, ((startx + 60 + 266, starty + 10 + ((i - 1) * (self.height/3)))))
+                    blit = self.font.render(str(self.strokes[i - 2]), 1, textCol)
+                    self.screen.blit(blit, ((startx + 170, starty + 10 + ((i - 1) * (self.height/(Nlevels+1))))))
                 except:
-                    blit = self.font.render('-', 1, (128,128,128))
-                    blit(blit, (startx + 62 + 266, starty + 10 + ((i - 1) * (self.height/3))))
-            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/3))), (startx + self.width, starty + (i * (self.height / 3))), 2)
+                    blit = self.font.render('-', 1, textCol)
+                    self.screen.blit(blit, (startx + 170, starty + 10 + ((i - 1) * (self.height/(Nlevels+1)))))
+            pygame.draw.line(self.screen, (0,0,0), (startx, starty + (i * (self.height/(Nlevels+1)))), (startx + self.width, starty + (i * (self.height / (Nlevels+1)))), 2)
+        pygame.display.update()
+        pygame.time.delay(10000)
+        # event = pygame.event.get()[0]
+        # while event.type != MOUSEBUTTONDOWN:
+        #     event = pygame.event.get()

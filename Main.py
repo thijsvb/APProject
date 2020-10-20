@@ -19,15 +19,19 @@ def main():
     level_list.append(Levels.Level_01(screen))
     level_list.append(Levels.Level_02(screen))
 
+    level_list.append(None)
+
     # Set the current level
     current_level_no = 0
     current_level = level_list[current_level_no]
     # Keep track of scores
-    strokes = 1
+    strokes = 0
     sheet = scoreSheet(screen)
 
     loop = True
     while loop:
+        if current_level == None:
+            break
         # This for loop checks the pygame events: things like user inputs get turned into those events
         for event in pygame.event.get():
             # This event handles close the window
@@ -43,19 +47,13 @@ def main():
 
         # Update the physics
         current_level.update()
-        # b.bounce(walls)
-        # b.move()
-        # g.hit(b)
 
         # Draw all the objects
         current_level.draw()
-        # g.draw()
-        # for wall in walls:
-        #     wall.draw()
-        # b.draw()
 
         if current_level.finished:
-             # sheet.drawSheet(strokes)
+             sheet.drawSheet(strokes)
+             strokes = 0
              current_level_no += 1
              current_level = level_list[current_level_no]
 
