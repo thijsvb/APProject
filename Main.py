@@ -22,7 +22,6 @@ def main():
     level_list.append(Levels.Level_04(screen))
     level_list.append(Levels.Level_05(screen))
 
-
     level_list.append(None)
 
     # Set the current level
@@ -60,6 +59,9 @@ def main():
                     level_list = []
                     level_list.append(Levels.Level_01(screen))
                     level_list.append(Levels.Level_02(screen))
+                    level_list.append(Levels.Level_03(screen))
+                    level_list.append(Levels.Level_04(screen))
+                    level_list.append(Levels.Level_05(screen))
 
                     level_list.append(None)
                     current_level_no = 0
