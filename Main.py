@@ -31,7 +31,42 @@ def main():
     loop = True
     while loop:
         if current_level == None:
-            break
+            # Draw end screen
+            screen.fill((0,0,0))
+            font = pygame.font.SysFont('arial', 30)
+            text1 = [font.render("Thanks you", 1, (255, 255, 255)),
+                    font.render("for", 1, (255, 255, 255)),
+                    font.render("playing!", 1, (255, 255, 255))]
+            for i, t in enumerate(text1):
+                w, h = t.get_size()
+                screen.blit(t, (int(screenWidth/6 - w/2),int(screenHeight/2 + (i-1)*h)))
+            text2 = [font.render("Try again", 1, (255, 255, 255)),
+                    font.render("for a", 1, (255, 255, 255)),
+                    font.render("better score!", 1, (255, 255, 255))]
+            for i, t in enumerate(text2):
+                w, h = t.get_size()
+                screen.blit(t, (int(screenWidth*5/6 - w/2),int(screenHeight/2 + (i-1)*h)))
+            sheet.drawSheet()
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    loop = False
+                if event.type == MOUSEBUTTONDOWN:
+                    #Reset levels and scores
+                    # The levels need to be made again here so it resets the ball position and the finished attribute
+                    level_list = []
+                    level_list.append(Levels.Level_01(screen))
+                    level_list.append(Levels.Level_02(screen))
+
+                    level_list.append(None)
+                    current_level_no = 0
+                    current_level = level_list[current_level_no]
+
+                    strokes = 0
+                    sheet = scoreSheet(screen)
+            # Update the screen and wait for the next frame (without the delay the game runs way too fast)
+            pygame.display.update()
+            pygame.time.delay(int(1000/framerate))
+            continue
         # This for loop checks the pygame events: things like user inputs get turned into those events
         for event in pygame.event.get():
             # This event handles close the window
@@ -56,6 +91,12 @@ def main():
              strokes = 0
              current_level_no += 1
              current_level = level_list[current_level_no]
+             wait = True
+             while wait:
+                 for event in pygame.event.get():
+                     if event.type == MOUSEBUTTONDOWN:
+                         wait = False
+
 
         # Update the screen and wait for the next frame (without the delay the game runs way too fast)
         pygame.display.update()

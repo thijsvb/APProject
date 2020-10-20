@@ -164,8 +164,8 @@ class scoreSheet():
         self.screen.blit(blit, (self.screenWidth/2 - 60, self.height+45))
         pygame.display.update()
         # pygame.time.delay(60000)
-        wait = True
-        while wait:
-            for event in pygame.event.get():
-                if event.type == MOUSEBUTTONDOWN:
-                    wait = False
+        # wait = True
+        # while wait:
+        #     for event in pygame.event.get():
+        #         if event.type == MOUSEBUTTONDOWN:
+        #             wait = False
