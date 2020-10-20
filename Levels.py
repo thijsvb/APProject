@@ -64,7 +64,7 @@ class Level_02(Level):
     def __init__(self, screen):
         Level.__init__(self, screen) # Call the parent constructor
         screenWidth, screenHeight = screen.get_size()
-        self.background = (0, 127, 50)
+        self.background = (68, 87, 90)
         self.b = Ball(screen, screenWidth/2, 500)
         self.g = Goal(screen, 400, 100)
 
