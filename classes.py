@@ -142,7 +142,9 @@ class scoreSheet():
         pygame.draw.rect(grey, (startx, starty, self.width, self.height))
         for i in range(1,4):
             pygame.draw.line((0,0,0), (startx + (i * (self.width/3)), starty), (startx + (i * (self.width/3)), starty + self.height), 2)
-        for i in range(1, 11):
+                for i in range(1, 3):
+            pygame.draw.line((0,0,0), (startx + (i * (self.width/2)), starty), (startx + (i * (self.width/2)), starty + self.height), 2)
+        for i in range(1, 3):
             if i == 1:
                 columnLevel = self.font.render('Level', 2, (0,0,0))
                 self.screen.blit(columnLevel, (startx + 40, starty + 10))
@@ -157,4 +159,5 @@ class scoreSheet():
                 except:
                     blit = self.font.render('-', 1, (128,128,128))
                     blit(blit, (startx + 62 + 266, starty + 10 + ((i - 1) * (self.height/10))))
-            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/10))), (startx + self.width, starty + (i * (self.height / 10))), 2)
+            pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/3))), (startx + self.width, starty + (i * (self.height / 3))), 2)
+
