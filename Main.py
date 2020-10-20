@@ -37,7 +37,7 @@ def main():
             # Draw end screen
             screen.fill((0,0,0))
             font = pygame.font.SysFont('arial', 30)
-            text1 = [font.render("Thanks you", 1, (255, 255, 255)),
+            text1 = [font.render("Thank you", 1, (255, 255, 255)),
                     font.render("for", 1, (255, 255, 255)),
                     font.render("playing!", 1, (255, 255, 255))]
             for i, t in enumerate(text1):
