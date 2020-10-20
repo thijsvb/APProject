@@ -160,6 +160,8 @@ class scoreSheet():
                     blit = self.font.render('-', 1, textCol)
                     self.screen.blit(blit, (startx + 170, starty + 10 + ((i - 1) * (self.height/(Nlevels+1)))))
             pygame.draw.line(self.screen, (0,0,0), (startx, starty + (i * (self.height/(Nlevels+1)))), (startx + self.width, starty + (i * (self.height / (Nlevels+1)))), 2)
+        blit = self.font.render("Click to continue", 2, grey)
+        self.screen.blit(blit, (self.screenWidth/2 - 60, self.height+45))
         pygame.display.update()
         # pygame.time.delay(60000)
         wait = True
