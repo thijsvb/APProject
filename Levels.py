@@ -1,6 +1,6 @@
 import pygame
 from pygame.locals import *
-from classes import Ball, Goal, Wall, scoreSheet
+from Classes import Ball, Goal, Wall, scoreSheet
 
 class Level:
     #Generic super-class used to define a level. For each level with level"

@@ -1,7 +1,7 @@
 import math
 import pygame
 from pygame.locals import *
-from classes import Ball, Goal, Wall, scoreSheet
+from Classes import Ball, Goal, Wall, scoreSheet
 import Levels
 
 

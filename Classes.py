@@ -161,7 +161,9 @@ class scoreSheet():
                     self.screen.blit(blit, (startx + 170, starty + 10 + ((i - 1) * (self.height/(Nlevels+1)))))
             pygame.draw.line(self.screen, (0,0,0), (startx, starty + (i * (self.height/(Nlevels+1)))), (startx + self.width, starty + (i * (self.height / (Nlevels+1)))), 2)
         pygame.display.update()
-        pygame.time.delay(60000)
-        # event = pygame.event.get()[0]
-        # while event.type != MOUSEBUTTONDOWN:
-        #     event = pygame.event.get()
+        # pygame.time.delay(60000)
+        wait = True
+        while wait:
+            for event in pygame.event.get():
+                if event.type == MOUSEBUTTONDOWN:
+                    wait = False
