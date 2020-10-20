@@ -28,7 +28,7 @@ class Level:
 
     def click(self, mousePos):
         acc = (mousePos - self.b.pos).normalize()
-        acc *= 3
+        acc *= 4
         self.b.accelerate(acc)
 
     def draw(self):

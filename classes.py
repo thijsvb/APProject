@@ -13,7 +13,7 @@ class Ball:
 
         self.screen = surface # pygame wants to know where to draw things, so I added the screen as an argument
 
-        self.friction = 0.01 # this is just a constant to make the ball slow down over time, I put it here so it's easy to tweak if needed
+        self.friction = 0.005 # this is just a constant to make the ball slow down over time, I put it here so it's easy to tweak if needed
 
     def draw(self):
         # The position x and y are not whole numbers (and pygame wants exact pixel locations), so cast them as ints
@@ -158,4 +158,3 @@ class scoreSheet():
                     blit = self.font.render('-', 1, (128,128,128))
                     blit(blit, (startx + 62 + 266, starty + 10 + ((i - 1) * (self.height/3))))
             pygame.draw.line((0,0,0), (startx, starty + (i * (self.height/3))), (startx + self.width, starty + (i * (self.height / 3))), 2)
-
