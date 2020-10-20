@@ -45,7 +45,7 @@ class Level_01(Level):
     def __init__(self, screen):
         Level.__init__(self, screen) # Call the parent constructor
         screenWidth, screenHeight = screen.get_size()
-        self.background = (0, 127, 50)
+        self.background = (98, 166, 92)
         self.b = Ball(screen, screenWidth/2, 500)
         self.g = Goal(screen, 400, 100)
 
@@ -64,31 +64,41 @@ class Level_02(Level):
     def __init__(self, screen):
         Level.__init__(self, screen) # Call the parent constructor
         screenWidth, screenHeight = screen.get_size()
-        self.background = (158, 215, 225)
-        self.b = Ball(screen, screenWidth/2, 500)
-        self.g = Goal(screen, 400, 100)
+        self.background = (66,158,157)
+        self.b = Ball(screen, screenWidth-75, screenHeight-75)
+        self.g = Goal(screen, 75, screenHeight-75, color = (169, 169, 169))
 
         self.walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
                  Wall(screen, 0, 0, "vertical", screenHeight),
                  Wall(screen, screenWidth-10, 0, "vertical", screenHeight),
-                 Wall(screen, 0, screenHeight-10, "horizontal", screenWidth)]
-                #Only has surrounding walls now
-            
+                 Wall(screen, 0, screenHeight-10, "horizontal", screenWidth),
+                 Wall(screen, screenWidth/4, 100, "vertical", screenHeight-100),
+                 Wall(screen, screenWidth/4*3, 100, "vertical", screenHeight-100),
+                 Wall(screen, screenWidth/2, 0, "vertical", screenHeight-100)]
+                
+                
 class Level_03(Level):
     #definition for level 3
 
     def __init__(self, screen):
         Level.__init__(self, screen) # Call the parent constructor
         screenWidth, screenHeight = screen.get_size()
-        self.background = (158, 215, 225)
-        self.b = Ball(screen, screenWidth/2, 500)
-        self.g = Goal(screen, 400, 100)
+        self.background = (78,42,42)
+        self.b = Ball(screen, screenWidth-50, screenHeight-50)
+        self.g = Goal(screen, 50, screenHeight-150, color = (169, 169, 169))
 
         self.walls = [Wall(screen, 0, 0, "horizontal", screenWidth),
                  Wall(screen, 0, 0, "vertical", screenHeight),
                  Wall(screen, screenWidth-10, 0, "vertical", screenHeight),
-                 Wall(screen, 0, screenHeight-10, "horizontal", screenWidth)]
-                #Only has surrounding walls now
+                 Wall(screen, 0, screenHeight-10, "horizontal", screenWidth), 
+                 Wall(screen, 0, screenHeight-200, "horizontal", 120),
+                 Wall(screen, screenWidth-175, screenHeight-150, "horizontal", 175),
+                 Wall(screen, screenWidth/2, screenHeight-200, "vertical", screenHeight-200),
+                 Wall(screen, screenWidth/2, 0, "vertical", screenHeight/2),
+                 Wall(screen, screenWidth/2, screenHeight-200, "horizontal", 135),
+                 Wall(screen, screenWidth/2+125, 100, "vertical", screenHeight-300),
+                 Wall(screen, 230, screenHeight-screenHeight/1.5, "vertical", screenHeight/1.5)]
+
 
 class Level_04(Level):
     #definition for level 4
