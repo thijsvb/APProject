@@ -10,7 +10,7 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption('Game name here') # maybe we should come up with a name
+    pygame.display.set_caption('TargetGolf') # maybe we should come up with a name
     framerate = 60 # I set this framerate to use later
     screenWidth, screenHeight = screen.get_size()
 
