@@ -35,6 +35,7 @@ def main():
     while loop:
         if current_level == None:
             # Draw end screen
+            finalScore = sum(sheet.getScore())
             screen.fill((0,0,0))
             font = pygame.font.SysFont('arial', 30)
             text1 = [font.render("Thank you", 1, (255, 255, 255)),
@@ -43,7 +44,8 @@ def main():
             for i, t in enumerate(text1):
                 w, h = t.get_size()
                 screen.blit(t, (int(screenWidth/6 - w/2),int(screenHeight/2 + (i-1)*h)))
-            text2 = [font.render("Try again", 1, (255, 255, 255)),
+            text2 = [font.render("Final score: " + str(finalScore), 1, (255, 255, 255)),
+                    font.render("Try again", 1, (255, 255, 255)),
                     font.render("for a", 1, (255, 255, 255)),
                     font.render("better score!", 1, (255, 255, 255))]
             for i, t in enumerate(text2):
